@@ -51,7 +51,7 @@ const navigate = useNavigate();
         <div className="cart-total">
           <h2>Cart Total</h2>
           <div>
-            <div className="cart-total-details"> 
+          <div className="cart-total-details"> 
             <p>Subtotal</p>
             <p>${getTotalCartAmount()}</p>
             </div>
