@@ -80,3 +80,23 @@ margin-top: 5px;
       
 
     }
+
+    .password-input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      
+      .password-input-container input {
+        width: 100%;
+        padding-right: 30px; /* Adjust padding to make space for the icon */
+      }
+      
+      .password-toggle-icon {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.5); /* Make the icon semi-transparent */
+        background-color: transparent; /* Make the icon background transparent */
+      }
+      

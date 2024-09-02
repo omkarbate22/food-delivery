@@ -5,35 +5,39 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
+  const [token, setToken] = useState("");
+
+  const url = "http://localhost:4000";
 
   const addToCart = (itemId) => {
-    if (!cartItems[itemId]) {
-      setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-    } else {
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    }
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: (prev[itemId] || 0) + 1
+    }));
   };
 
   const removeFromCart = (itemId) => {
-    if (cartItems[itemId] > 1) {
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    } else {
-      const { [itemId]: _, ...rest } = cartItems;
-      setCartItems(rest);
-    }
+    setCartItems((prev) => {
+      const updatedCartItems = { ...prev };
+      if (updatedCartItems[itemId] > 1) {
+        updatedCartItems[itemId] -= 1;
+      } else {
+        delete updatedCartItems[itemId];
+      }
+      return updatedCartItems;
+    });
   };
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const itemId in cartItems) {
-      const item = food_list.find((item) => item._id === itemId); // Use itemId instead of parseInt(itemId)
+      const item = food_list.find((item) => item._id === itemId);
       if (item) {
         totalAmount += cartItems[itemId] * item.price;
       }
     }
     return totalAmount;
   };
-  
 
   const getTotalItemCount = () => {
     let totalCount = 0;
@@ -51,6 +55,9 @@ const StoreContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     getTotalItemCount,
+    url,
+    token,
+    setToken
   };
 
   return (
