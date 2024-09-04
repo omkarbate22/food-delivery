@@ -24,27 +24,7 @@ Stripe/PayPal (Choose based on your integration)
 Deployment:
 Docker
 AWS/Heroku
-🎯 Project Structure
-bash
-Copy code
-├── backend
-│   ├── config
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── middlewares
-│   └── server.js
-├── frontend
-│   ├── public
-│   ├── src
-│   │   ├── components
-│   │   ├── pages
-│   │   ├── services
-│   │   └── App.js
-│   └── index.html
-├── README.md
-├── package.json
-└── .gitignore
+
 📸 Screenshots
 Home Page
 
